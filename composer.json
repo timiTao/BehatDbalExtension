@@ -1,0 +1,28 @@
+{
+  "name": "timitao/behatdbalextension",
+  "type": "behat-extension",
+  "description": "",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "keywords": [
+    "test",
+    "gui",
+    "behat",
+    "extension"
+  ],
+  "authors": [
+    {
+      "name": "Tomasz Kunicki",
+      "email": "kunicki.tomasz@gmail.com",
+      "homepage": "http://tomaszkunicki.pl"
+    }
+  ],
+  "require": {
+    "php": ">=5.4",
+    "behat/behat": "~3.0,>=3.0.5",
+    "doctrine/dbal": "2.4.*"
+  },
+  "autoload": {
+    "psr-4": {"": "src/"}
+  }
+}

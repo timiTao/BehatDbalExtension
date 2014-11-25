@@ -1,0 +1,18 @@
+default:
+  autoload:
+    '': %paths.base%/src
+  suites:
+    default:
+      path: %paths.base%/features
+      contexts:
+        - Behat\DbalExtension\Context\FeatureContext
+  extensions:
+    Behat\DbalExtension\ServiceContainer\DbalExtension:
+      dbal:
+        default_connection: default
+        connections:
+          default:
+            dbname: omarsys_test
+            user: root
+            password: root
+            host: localhost

@@ -6,7 +6,7 @@
   "license": "MIT",
   "keywords": [
     "test",
-    "gui",
+    "dbal",
     "behat",
     "extension"
   ],

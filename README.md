@@ -4,7 +4,7 @@
 [![Total Downloads](https://poser.pugx.org/timitao/behatdbalextension/downloads.svg)](https://packagist.org/packages/timitao/behatdbalextension)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/31b5fdd5-a66a-4f71-b9e0-b517694a3cbf/mini.png)](https://insight.sensiolabs.com/projects/31b5fdd5-a66a-4f71-b9e0-b517694a3cbf)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/timitao/behatdbalextension/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/timitao/behatdbalextension/?branch=master)
-
+[![Build Status](https://travis-ci.org/timiTao/BehatDbalExtension.svg?branch=master)](https://travis-ci.org/timiTao/BehatDbalExtension)
 
 Behat Dbal Extension
 ==============

@@ -9,7 +9,7 @@
 Behat Dbal Extension
 ==============
 
-Still early version. Not working.
+Still early version, but working.
 
 ## Installing extension
 

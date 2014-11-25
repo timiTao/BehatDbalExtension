@@ -9,8 +9,6 @@
 Behat Dbal Extension
 ==============
 
-Still early version, but working.
-
 ## Installing extension
 
 The easiest way to install is by using [Composer](https://getcomposer.org):
@@ -33,6 +31,21 @@ Check file ``behat.yml.dist``
 It is standard as for
     
     http://symfony.com/doc/current/cookbook/doctrine/dbal.html
+    
+## Context test
+
+My example of test connection with given Context ``Behat\DbalExtension\ContextFeatureContext``
+ 
+      Scenario: test
+        Given Dbal truncate table "test"
+        And Dbal load data to table "test" :
+          | id | name  | name2 |
+          | 1  | test1 | 3     |
+          | 2  | test2 | 4     |
+        And Dbal run sql "DELETE FROM `test` WHERE id > 1"
+        And Dbal expect to have in table "test" at last:
+          | name  | name2 |
+          | test1 | 3     |
 
 
 ## Contributors

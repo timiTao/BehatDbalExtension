@@ -49,7 +49,13 @@ class DbalExtension implements ExtensionInterface
      */
     public function configure(ArrayNodeDefinition $builder)
     {
-
+        $builder
+            ->addDefaultsIfNotSet()
+            ->children()
+                ->arrayNode('dbal')
+                ->prototype('variable')->info('See doctrine DBAL configuration')->end()
+            ->end()
+        ;
     }
     /**
      * {@inheritDoc}
@@ -59,7 +65,7 @@ class DbalExtension implements ExtensionInterface
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Config'));
         $loader->load('services.yml');
 
-        $container->setParameter('dbalextension.dbal.configuration', []);
+        $container->setParameter('dbalextension.dbal.configuration', $config['dbal']);
     }
 
 

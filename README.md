@@ -28,6 +28,8 @@ or composer.json
     
 ## Configuration
 
+Check file ``behat.yml.dist``
+
 It is standard as for
     
     http://symfony.com/doc/current/cookbook/doctrine/dbal.html

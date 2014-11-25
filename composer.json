@@ -20,7 +20,7 @@
   "require": {
     "php": ">=5.4",
     "behat/behat": "~3.0,>=3.0.5",
-    "doctrine/dbal": "2.4.*"
+    "doctrine/dbal": ">=2.4"
   },
   "autoload": {
     "psr-4": {"": "src/"}

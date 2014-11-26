@@ -5,7 +5,9 @@ default:
     default:
       path: %paths.base%/features
       contexts:
-        - Behat\DbalExtension\Context\FeatureContext
+        - Behat\DbalExtension\Context\FeatureContext:
+          baseSqlPath: %paths.base%/sql/
+
   extensions:
     Behat\DbalExtension\ServiceContainer\DbalExtension:
       dbal:

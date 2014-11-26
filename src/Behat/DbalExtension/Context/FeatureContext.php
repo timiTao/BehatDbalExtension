@@ -17,6 +17,20 @@ class FeatureContext implements Context, DbalAwareContextInterface
     protected $connection;
 
     /**
+     * @var
+     */
+    protected $baseSqlPath;
+
+    /**
+     * @param $baseSqlPath
+     */
+    function __construct($baseSqlPath)
+    {
+        $this->baseSqlPath = $baseSqlPath;
+    }
+
+
+    /**
      * Sets connection instance.
      *
      * @param Connection $connection
@@ -75,7 +89,7 @@ class FeatureContext implements Context, DbalAwareContextInterface
     }
 
     /**
-     * @Given Dbal expect to have in table :arg1 at last:
+     * @Given Dbal expect to have in table :arg1 at least:
      *
      * @param $arg1
      * @param TableNode $table
@@ -101,5 +115,21 @@ class FeatureContext implements Context, DbalAwareContextInterface
                 throw new \Exception(sprintf("Table '%s' don't have row given data: [%s]", $arg1, json_encode($row)));
             }
         }
+    }
+
+    /**
+     * @Given Dbal load file :arg1
+     *
+     * @param string $path
+     * @throws \Exception
+     */
+    public function dbalLoadFile($path)
+    {
+        $fullPath = $this->baseSqlPath . $path;
+        if (!file_exists($fullPath)) {
+            throw new \Exception(sprintf("File %s don't exists in base folder '%s'", $path, $this->baseSqlPath));
+        }
+        $content = file_get_contents($fullPath);
+        $this->dbalRunSql($content);
     }
 }

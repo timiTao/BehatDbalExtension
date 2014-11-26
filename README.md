@@ -37,13 +37,14 @@ It is standard as for
 My example of test connection with given Context ``Behat\DbalExtension\ContextFeatureContext``
  
       Scenario: test
-        Given Dbal truncate table "test"
+        Given Dbal load file 'file.sql'
+        And Dbal truncate table "test"
         And Dbal load data to table "test" :
           | id | name  | name2 |
           | 1  | test1 | 3     |
           | 2  | test2 | 4     |
         And Dbal run sql "DELETE FROM `test` WHERE id > 1"
-        And Dbal expect to have in table "test" at last:
+        And Dbal expect to have in table "test" at least:
           | name  | name2 |
           | test1 | 3     |
 

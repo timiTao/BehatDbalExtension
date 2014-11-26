@@ -24,7 +24,7 @@ class FeatureContext implements Context, DbalAwareContextInterface
     /**
      * @param $baseSqlPath
      */
-    function __construct($baseSqlPath)
+    function __construct($baseSqlPath = '')
     {
         $this->baseSqlPath = $baseSqlPath;
     }

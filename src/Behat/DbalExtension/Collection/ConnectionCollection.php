@@ -23,4 +23,4 @@ class ConnectionCollection extends \ArrayObject
     {
         return $this->offsetGet($key);
     }
-} 
+}

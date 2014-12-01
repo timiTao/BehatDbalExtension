@@ -29,7 +29,7 @@ class Factory
     }
 
     /**
-     *
+     * @return ConnectionCollection
      */
     public function factory()
     {
@@ -39,6 +39,7 @@ class Factory
             $connection = DriverManager::getConnection($connectionConfig);
             $list[$key] = $connection;
         }
+
         return new ConnectionCollection($list);
     }
-} 
+}

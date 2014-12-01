@@ -51,6 +51,7 @@ class FeatureContext implements Context, DbalAwareContextInterface
     /**
      * @Given Dbal load data to table :arg1 :
      *
+     * @param $string
      * @param TableNode $table
      */
     public function apiForm($string, TableNode $table)

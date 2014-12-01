@@ -1,17 +1,27 @@
 parameters:
   dbalextension.context_initializer.class: Behat\DbalExtension\Context\Initializer\DbalAwareInitializer
   dbalextension.connection.class: Doctrine\DBAL\Connection
-  dbalextension.connection.factory.class: Doctrine\DBAL\DriverManager
+  dbalextension.connection.collection.class: Behat\DbalExtension\Collection\ConnectionCollection
+  dbalextension.connection.collection.factory.class: Behat\DbalExtension\Collection\Factory
 
 services:
+  dbalextension.connection.collection.factory:
+    class: "%dbalextension.connection.collection.factory.class%"
+    arguments:
+      - "%dbalextension.config%"
+
+  dbalextension.connection.collection:
+    class: "%dbalextension.connection.collection.class%"
+    factory: ["@dbalextension.connection.collection.factory", "factory"]
+
   dbalextension.connection:
     class: "%dbalextension.connection.class%"
-    factory_class: "%dbalextension.connection.factory.class%"
-    factory_method: "getConnection"
-    arguments: ["%dbalextension.dbal.configuration%"]
+    factory: ["@dbalextension.connection.collection", "get"]
+    arguments: ["%dbalextension.config.default_connection%"]
 
   dbalextension.context_initializer:
     class: "%dbalextension.context_initializer.class%"
     arguments: ["@dbalextension.connection"]
     tags:
       -  { name: context.initializer }
+

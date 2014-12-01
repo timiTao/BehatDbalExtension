@@ -11,11 +11,13 @@ default:
   extensions:
     Behat\DbalExtension\ServiceContainer\DbalExtension:
       dbal:
-        dbname:               test
-        host:                 localhost
-        port:                 3306
-        user:                 test
-        password:             test
-        driver:               pdo_mysql
-        memory:               true
-        charset:              UTF8
+        connections:
+          default:
+            dbname:               test
+            host:                 localhost
+            port:                 3306
+            user:                 test
+            password:             test
+            driver:               pdo_mysql
+            memory:               true
+            charset:              UTF8

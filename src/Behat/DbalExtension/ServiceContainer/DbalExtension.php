@@ -52,11 +52,29 @@ class DbalExtension implements ExtensionInterface
         $builder
             ->addDefaultsIfNotSet()
             ->children()
-                ->arrayNode('dbal')
-                ->prototype('variable')->info('See doctrine DBAL configuration')->end()
+            ->arrayNode('dbal')
+                ->children()
+                    ->scalarNode('default_connection')->defaultValue('default')->end()
+                    ->arrayNode('connections')
+                        ->isRequired()
+                        ->requiresAtLeastOneElement()
+                        ->prototype('array')
+                        ->children()
+                            ->scalarNode('dbname')->end()
+                            ->scalarNode('host')->end()
+                            ->scalarNode('port')->end()
+                            ->scalarNode('user')->end()
+                            ->scalarNode('password')->end()
+                            ->scalarNode('driver')->end()
+                            ->scalarNode('memory')->end()
+                            ->scalarNode('charset')->end()
+                        ->end()
+                    ->end()
+                ->end()
             ->end()
         ;
     }
+
     /**
      * {@inheritDoc}
      */
@@ -65,7 +83,9 @@ class DbalExtension implements ExtensionInterface
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Config'));
         $loader->load('services.yml');
 
-        $container->setParameter('dbalextension.dbal.configuration', $config['dbal']);
+        $container->setParameter('dbalextension.config', $config);
+        $container->setParameter('dbalextension.config.default_connection', $config['dbal']['default_connection']);
+
     }
 
 

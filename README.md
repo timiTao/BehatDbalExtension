@@ -31,6 +31,20 @@ Check file ``behat.yml.dist``
 It is standard as for
     
     http://symfony.com/doc/current/cookbook/doctrine/dbal.html
+
+Default configuration:
+
+    dbal:
+        connections:
+          default:
+            dbname:               test
+            host:                 localhost
+            port:                 3306
+            user:                 test
+            password:             test
+            driver:               pdo_mysql
+            memory:               true
+            charset:              UTF8
     
 ## Context test
 

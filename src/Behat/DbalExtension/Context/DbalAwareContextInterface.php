@@ -18,6 +18,7 @@ interface DbalAwareContextInterface
      * Sets connection instance.
      *
      * @param Connection $connection
+     * @return void
      */
     public function setConnection(Connection $connection);
 }

@@ -74,6 +74,7 @@ class FeatureContext implements Context, DbalAwareContextInterface
 
     /**
      * @Given Dbal run sql :arg1
+     * @param string $arg1
      */
     public function dbalRunSql($arg1)
     {

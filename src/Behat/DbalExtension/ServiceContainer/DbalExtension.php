@@ -14,7 +14,11 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-
+/**
+ * Class DbalExtension
+ *
+ * @package Behat\DbalExtension\ServiceContainer
+ */
 class DbalExtension implements ExtensionInterface
 {
 
@@ -87,6 +91,4 @@ class DbalExtension implements ExtensionInterface
         $container->setParameter('dbalextension.config.default_connection', $config['dbal']['default_connection']);
 
     }
-
-
 }

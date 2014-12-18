@@ -51,14 +51,15 @@ class FeatureContext implements Context, DbalAwareContextInterface
     /**
      * @Given Dbal load data to table :arg1 :
      *
-     * @param $string
+     * @param $tableName
      * @param TableNode $table
      */
-    public function apiForm($string, TableNode $table)
+    public function apiForm($tableName, TableNode $table)
     {
+        $this->dbalRunSql(sprintf('LOCK TABLES %s WRITE;', $tableName));
         $queryBuilder = $this->getQueryBuilder();
         foreach ($table as $row) {
-            $queryBuilder->insert($string);
+            $queryBuilder->insert($tableName);
             $i = 0;
             foreach ($row as $columnName => $value) {
                 $queryBuilder
@@ -68,6 +69,7 @@ class FeatureContext implements Context, DbalAwareContextInterface
             }
             $queryBuilder->execute();
         }
+        $this->dbalRunSql('UNLOCK TABLES;');
     }
 
     /**

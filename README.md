@@ -31,20 +31,6 @@ Check file ``behat.yml.dist``
 It is standard as for
     
     http://symfony.com/doc/current/cookbook/doctrine/dbal.html
-
-Default configuration:
-
-    dbal:
-        connections:
-          default:
-            dbname:               test
-            host:                 localhost
-            port:                 3306
-            user:                 test
-            password:             test
-            driver:               pdo_mysql
-            memory:               true
-            charset:              UTF8
     
 ## Context test
 
@@ -62,6 +48,9 @@ My example of test connection with given Context ``Behat\DbalExtension\ContextFe
           | name  | name2 |
           | test1 | 3     |
 
+## Versioning
+ 
+Staring version ``0.8.1``, will follow [Semantic Versioning v2.0.0](http://semver.org/spec/v2.0.0.html).
 
 ## Contributors
 

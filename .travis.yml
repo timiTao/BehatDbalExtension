@@ -11,6 +11,8 @@ branches:
 before_script:
   - composer install --prefer-source --no-interaction --no-progress
   - export PATH=./bin:$PATH
+  - mysql -e 'create database test;' -uroot
+  - mysql -e 'CREATE TABLE `test` (`id` int(11) unsigned NOT NULL AUTO_INCREMENT,`name` varchar(255) DEFAULT NULL,PRIMARY KEY (`id`)) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;' -uroot
 
 script:
   -  php vendor/bin/behat

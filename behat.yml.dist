@@ -15,8 +15,8 @@ default:
                 dbname:               "test"
                 host:                 "127.0.0.1"
                 port:                 "3306"
-                user:                 "test"
-                password:             "test"
+                user:                 "travis"
+                password:
                 driver:               "pdo_mysql"
                 memory:               true
                 charset:              "UTF8"
@@ -24,8 +24,8 @@ default:
                 dbname:               "test"
                 host:                 "127.0.0.1"
                 port:                 "3306"
-                user:                 "test"
-                password:             "test"
+                user:                 "travis"
+                password:
                 driver:               "pdo_mysql"
                 memory:               true
                 charset:              "UTF8"

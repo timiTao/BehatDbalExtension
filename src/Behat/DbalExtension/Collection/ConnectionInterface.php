@@ -15,4 +15,4 @@ use Doctrine\DBAL\Driver\Connection;
 interface ConnectionInterface extends Connection
 {
 
-} 
+}

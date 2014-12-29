@@ -6,6 +6,7 @@
 
 namespace Behat\DbalExtension\Collection;
 
+use Behat\DbalExtension\Exception\DbalExtensionException;
 use Doctrine\DBAL\Driver\Connection;
 
 /**
@@ -13,14 +14,18 @@ use Doctrine\DBAL\Driver\Connection;
  *
  * @package Behat\DbalExtension\Collection
  */
-class ConnectionCollection extends \ArrayObject
+class ConnectionCollection extends \ArrayObject implements ConnectionCollectionInterface
 {
     /**
-     * @param Connection $key
+     * @param string $key
      * @return Connection
+     * @throws \Behat\DbalExtension\Exception\DbalExtensionException
      */
     public function get($key)
     {
+        if (!$this->offsetExists($key)) {
+            throw new DbalExtensionException(sprintf("Connection on given key '%s' don't exists", $key));
+        }
         return $this->offsetGet($key);
     }
 }

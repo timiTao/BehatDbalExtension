@@ -3,7 +3,6 @@
  * User: Tomasz Kunicki
  * Date: 01.12.2014
  */
-
 namespace Behat\DbalExtension\Collection;
 
 use Doctrine\DBAL\DriverManager;
@@ -29,7 +28,7 @@ class Factory
     }
 
     /**
-     * @return ConnectionCollection
+     * @return ConnectionCollectionInterface
      */
     public function factory()
     {

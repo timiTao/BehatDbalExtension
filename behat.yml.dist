@@ -5,19 +5,27 @@ default:
     default:
       path: %paths.base%/features
       contexts:
-        - Behat\DbalExtension\Context\FeatureContext:
-          baseSqlPath: %paths.base%/sql/
-
+        - Behat\DbalExtension\Context\CollectionFeatureContext
   extensions:
     Behat\DbalExtension\ServiceContainer\DbalExtension:
       dbal:
+        default_connection_alias: alias1
         connections:
-          default:
-            dbname:               test
-            host:                 localhost
-            port:                 3306
-            user:                 test
-            password:             test
-            driver:               pdo_mysql
-            memory:               true
-            charset:              UTF8
+            default:
+                dbname:               "test"
+                host:                 "127.0.0.1"
+                port:                 "3306"
+                user:                 "test"
+                password:             "test"
+                driver:               "pdo_mysql"
+                memory:               true
+                charset:              "UTF8"
+            alias1:
+                dbname:               "test"
+                host:                 "127.0.0.1"
+                port:                 "3306"
+                user:                 "test"
+                password:             "test"
+                driver:               "pdo_mysql"
+                memory:               true
+                charset:              "UTF8"

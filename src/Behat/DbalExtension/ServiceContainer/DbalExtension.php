@@ -3,7 +3,6 @@
  * User: Tomasz Kunicki
  * Date: 24.11.2014
  */
-
 namespace Behat\DbalExtension\ServiceContainer;
 
 
@@ -34,7 +33,7 @@ class DbalExtension implements ExtensionInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @return string
      */
     public function getConfigKey()
     {
@@ -42,14 +41,14 @@ class DbalExtension implements ExtensionInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @param ExtensionManager $extensionManager
      */
     public function initialize(ExtensionManager $extensionManager)
     {
     }
 
     /**
-     * {@inheritDoc}
+     * @param ArrayNodeDefinition $builder
      */
     public function configure(ArrayNodeDefinition $builder)
     {
@@ -58,7 +57,7 @@ class DbalExtension implements ExtensionInterface
             ->children()
             ->arrayNode('dbal')
                 ->children()
-                    ->scalarNode('default_connection')->defaultValue('default')->end()
+                    ->scalarNode('default_connection_alias')->defaultValue('default')->end()
                     ->arrayNode('connections')
                         ->isRequired()
                         ->requiresAtLeastOneElement()
@@ -80,7 +79,8 @@ class DbalExtension implements ExtensionInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @param ContainerBuilder $container
+     * @param array $config
      */
     public function load(ContainerBuilder $container, array $config)
     {
@@ -88,7 +88,6 @@ class DbalExtension implements ExtensionInterface
         $loader->load('services.yml');
 
         $container->setParameter('dbalextension.config', $config);
-        $container->setParameter('dbalextension.config.default_connection', $config['dbal']['default_connection']);
-
+        $container->setParameter('dbalextension.config.default_connection_alias', $config['dbal']['default_connection_alias']);
     }
 }

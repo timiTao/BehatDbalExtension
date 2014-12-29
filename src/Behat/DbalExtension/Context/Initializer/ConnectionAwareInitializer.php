@@ -3,30 +3,31 @@
  * User: Tomasz Kunicki
  * Date: 24.11.2014
  */
-
 namespace Behat\DbalExtension\Context\Initializer;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\Initializer\ContextInitializer;
-use Behat\DbalExtension\Context\DbalAwareContextInterface;
-use Doctrine\DBAL\Connection;
+use Behat\DbalExtension\Collection\ConnectionInterface;
+use Behat\DbalExtension\Context\ConnectionAwareContextInterface;
 
 /**
- * Class DoctrineDbalAwareInitializer
+ * Class ConnectionAwareInitializer
+ *
+ * @package Behat\DbalExtension\Context\Initializer
  */
-class DbalAwareInitializer implements ContextInitializer
+class ConnectionAwareInitializer implements ContextInitializer
 {
     /**
-     * @var \Doctrine\DBAL\Connection
+     * @var ConnectionInterface
      */
     private $connection;
 
     /**
      * Initializes initializer.
      *
-     * @param Connection $connection
+     * @param ConnectionInterface $connection
      */
-    public function __construct(Connection $connection)
+    public function __construct($connection)
     {
         $this->connection = $connection;
     }
@@ -38,9 +39,10 @@ class DbalAwareInitializer implements ContextInitializer
      */
     public function initializeContext(Context $context)
     {
-        if (!$context instanceof DbalAwareContextInterface) {
+        if (!$context instanceof ConnectionAwareContextInterface) {
             return;
         }
+
         $context->setConnection($this->connection);
     }
 }

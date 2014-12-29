@@ -26,31 +26,25 @@ or composer.json
     
 ## Configuration
 
-Check file ``behat.yml.dist``
+Check file [behat.yml.dist](https://github.com/timiTao/BehatDbalExtension/blob/master/behat.yml.dist) for full configuration
 
-It is standard as for
-    
-    http://symfony.com/doc/current/cookbook/doctrine/dbal.html
-    
-## Context test
+Is is standard for [DBAL connection](http://symfony.com/doc/current/cookbook/doctrine/dbal.html)
 
-My example of test connection with given Context ``Behat\DbalExtension\ContextFeatureContext``
- 
-      Scenario: test
-        Given Dbal load file 'file.sql'
-        And Dbal truncate table "test"
-        And Dbal load data to table "test" :
-          | id | name  | name2 |
-          | 1  | test1 | 3     |
-          | 2  | test2 | 4     |
-        And Dbal run sql "DELETE FROM `test` WHERE id > 1"
-        And Dbal expect to have in table "test" at least:
-          | name  | name2 |
-          | test1 | 3     |
+Additional options:
+* ``default_connection_alias`` - select default connection from collection. Default value: ``default``
+* ``connections`` - collection of connection
+
+## Examples
+
+Look at this [base.feature](https://github.com/timiTao/BehatDbalExtension/blob/master/features/base.feature)
+
+Make sure, to have run mysql with user test@test and table test before run:
+
+    ``php bin/behat``
 
 ## Versioning
- 
-Staring version ``0.8.1``, will follow [Semantic Versioning v2.0.0](http://semver.org/spec/v2.0.0.html).
+
+Staring version ``1.0.0``, will follow [Semantic Versioning v2.0.0](http://semver.org/spec/v2.0.0.html).
 
 ## Contributors
 
